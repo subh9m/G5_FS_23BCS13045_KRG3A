@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshit Gupta - Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .skill-bar {
+            transition: width 2s ease-in-out;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #667eea;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #667eea; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-indigo-600">HG</span>
+                    <span class="ml-2 text-xl font-semibold">Harshit Gupta</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-indigo-600 transition duration-300">Home</a>
+                    <a href="#skills" class="text-gray-700 hover:text-indigo-600 transition duration-300">Skills</a>
+                    <a href="#projects" class="text-gray-700 hover:text-indigo-600 transition duration-300">Projects</a>
+                    <a href="#education" class="text-gray-700 hover:text-indigo-600 transition duration-300">Education</a>
+                    <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition duration-300">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-700">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white pt-24 pb-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Harshit Gupta</h1>
+                    <div class="typewriter text-xl mb-6">
+                        Java Full Stack Developer | Student | DSA Enthusiast
+                    </div>
+                    <p class="text-lg mb-8">Passionate about creating innovative solutions and exploring new technologies. Currently mastering the art of full-stack development with Java and modern web technologies.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                            Get In Touch
+                        </a>
+                        <a href="#projects" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-300">
+                            View Projects
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Technical Skills</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <i class="fab fa-java text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Java</h3>
+                    <p class="text-gray-600">Advanced programming skills with focus on Spring Boot and Hibernate</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-4">
+                        <div class="skill-bar bg-red-500 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <i class="fab fa-python text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Python</h3>
+                    <p class="text-gray-600">Proficient in data analysis, automation, and machine learning basics</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-4">
+                        <div class="skill-bar bg-blue-500 h-2 rounded-full" style="width: 78%"></div>
+                    </div>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <i class="fas fa-database text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">SQL</h3>
+                    <p class="text-gray-600">Database design, optimization, and complex query writing</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-4">
+                        <div class="skill-bar bg-green-500 h-2 rounded-full" style="width: 82%"></div>
+                    </div>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <i class="fab fa-git-alt text-4xl text-orange-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Git & GitHub</h3>
+                    <p class="text-gray-600">Version control, collaboration, and CI/CD pipeline management</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-4">
+                        <div class="skill-bar bg-orange-500 h-2 rounded-full" style="width: 88%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 grid md:grid-cols-2 gap-8">
+                <div class="bg-indigo-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Frontend Technologies</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white px-3 py-1 rounded-full text-sm shadow-sm">HTML5</span>
+                        <span class="bg-white px-3 py-1 rounded-full text-sm shadow-sm">CSS3</span>
+                        <span class="bg-white px-3 py-1 rounded-full text-sm shadow-sm">JavaScript</span>
+                        <span class="bg-white px-3 py-1 rounded-full text-sm shadow-sm">React</span>
+                        <span class="bg-white px-3 py-1 rounded-full text-sm shadow-sm">Tailwind CSS</span>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Backend Technologies</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white px-3 py-1 rounded-full text-sm shadow-sm">Spring Boot</span>
+                        <span class="bg-white px-3 py-1 rounded-full text-sm shadow-sm">Node.js</span>
+                        <span class="bg-white px-3 py-1 rounded-full text-sm shadow-sm">Express.js</span>
+                        <span class="bg-white px-3 py-1 rounded-full text-sm shadow-sm">MongoDB</span>
+                        <span class="bg-white px-3 py-1 rounded-full text-sm shadow-sm">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-indigo-100 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/60aff04d-3b95-4c48-a2fd-6d32c6c2db9c.png" alt="Artificial intelligence chatbot interface with conversation bubbles and neural network visualization" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Intelligent Chatbot</h3>
+                        <p class="text-gray-600 mb-4">A sophisticated chatbot application built using Python's Langchain framework, featuring natural language processing and machine learning capabilities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm">Python</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm">Langchain</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm">NLP</span>
+                        </div>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800 font-semibold">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-blue-100 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c1a7a1da-c0e6-412c-be81-6f2624583e0a.png" alt="Maritime industry dashboard showing dry dock scheduling and vessel maintenance timeline" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Dry Dock Planner</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive landing page and planning tool for maritime dry dock operations, featuring scheduling, resource allocation, and progress tracking.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">HTML/CSS</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">JavaScript</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">UI/UX</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-green-100 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4709d414-ab4f-4477-aa8e-4eea50fe7cf8.png" alt="Interactive Tic Tac Toe game board with X and O markers in a modern digital interface" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Tic Tac Toe Game</h3>
+                        <p class="text-gray-600 mb-4">A classic Tic Tac Toe game built with Tkinter, featuring an intuitive GUI, score tracking, and customizable difficulty levels.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Python</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Tkinter</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">GUI</span>
+                        </div>
+                        <a href="#" class="text-green-600 hover:text-green-800 font-semibold">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-red-100 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1efc71dc-5ece-48ca-9429-a413a6ea83b3.png" alt="Hangman game interface showing word puzzle with gallows and letter selection keyboard" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Hangman Game</h3>
+                        <p class="text-gray-600 mb-4">An engaging Hangman game developed with Tkinter, featuring word categories, hint system, and progressive difficulty.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">Python</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">Tkinter</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">Game Dev</span>
+                        </div>
+                        <a href="#" class="text-red-600 hover:text-red-800 font-semibold">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Education</h2>
+            <div class="space-y-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold">
+                            CU
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-xl font-semibold">Bachelor of Technology</h3>
+                            <p class="text-gray-600">Chandigarh University</p>
+                        </div>
+                        <div class="ml-auto bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">
+                            2023 - 2027
+                        </div>
+                    </div>
+                    <p class="text-gray-700">Pursuing degree in Computer Science with specialization in Full Stack Development. Active member of coding clubs and tech communities.</p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                            CJM
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-xl font-semibold">12th Grade</h3>
+                            <p class="text-gray-600">CJM Hampton Court</p>
+                        </div>
+                        <div class="ml-auto bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                            2020 - 2022
+                        </div>
+                    </div>
+                    <p class="text-gray-700">Completed higher secondary education with focus on Science and Mathematics. Participated in various coding competitions and tech workshops.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-indigo-50 p-8 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-6 text-center">Certifications & Achievements</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <i class="fas fa-certificate text-indigo-600 text-2xl mb-2"></i>
+                        <h4 class="font-semibold">Java Certification</h4>
+                        <p class="text-sm text-gray-600">Oracle Certified Professional</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <i class="fas fa-trophy text-yellow-600 text-2xl mb-2"></i>
+                        <h4 class="font-semibold">Codeathon Winner</h4>
+                        <p class="text-sm text-gray-600">University Level Competition</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <i class="fas fa-medal text-blue-600 text-2xl mb-2"></i>
+                        <h4 class="font-semibold">DSA Specialist</h4>
+                        <p class="text-sm text-gray-600">Advanced Algorithm Skills</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <i class="fas fa-award text-green-600 text-2xl mb-2"></i>
+                        <h4 class="font-semibold">Web Development</h4>
+                        <p class="text-sm text-gray-600">Full Stack Certification</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Get In Touch</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Let's Connect</h3>
+                    <p class="text-gray-300 mb-6">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-indigo-400 text-xl mr-4"></i>
+                            <span>harshit.gupta@example.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-indigo-400 text-xl mr-4"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-indigo-400 text-xl mr-4"></i>
+                            <span>Chandigarh, India</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-500 transition duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-500 transition duration-300">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-300 transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block mb-2">Name</label>
+                            <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block mb-2">Email</label>
+                            <input type="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block mb-2">Message</label>
+                            <textarea rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type your message here..."></textarea>
+                        </div>
+                        <button type="button" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-500 transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p>© 2025 Harshit Gupta. All rights reserved.</p>
+            <p class="mt-2 text-sm">Designed and developed with ❤️ using HTML, CSS, JavaScript, and Tailwind CSS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('.hidden.md\\:flex');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-16');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('w-full');
+            nav.classList.toggle('bg-white');
+            nav.classList.toggle('shadow-lg');
+            nav.classList.toggle('p-4');
+        });
+
+        // Animation for skill bars
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-bar');
+            skillBars.forEach(bar => {
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = bar.style.width; // Trigger animation
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
