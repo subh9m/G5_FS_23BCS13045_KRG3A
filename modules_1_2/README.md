@@ -14,3 +14,96 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+
+src/
+ ┣ components/
+ ┃ ┣ common/ (Navbar, Sidebar, Modal, etc.)
+ ┃ ┣ admin/
+ ┃ ┃ ┣ UserTable.jsx
+ ┃ ┃ ┣ SettingsForm.jsx
+ ┃ ┣ instructor/
+ ┃ ┃ ┣ CourseForm.jsx
+ ┃ ┃ ┣ QuestionForm.jsx
+ ┣ pages/
+ ┃ ┣ auth/
+ ┃ ┃ ┗ Login.jsx
+ ┃ ┣ admin/
+ ┃ ┃ ┣ Dashboard.jsx
+ ┃ ┃ ┣ Users.jsx
+ ┃ ┃ ┣ Settings.jsx
+ ┃ ┣ instructor/
+ ┃ ┃ ┣ Dashboard.jsx
+ ┃ ┃ ┣ Courses.jsx
+ ┃ ┃ ┣ Modules.jsx
+ ┃ ┃ ┣ Questions.jsx
+ ┃ ┃ ┣ Exams.jsx
+ ┃ ┃ ┣ Students.jsx
+ ┣ routes/
+ ┃ ┗ ProtectedRoutes.jsx
+ ┣ services/
+ ┃ ┣ api.js (axios setup)
+ ┃ ┣ authService.js
+ ┃ ┣ userService.js
+ ┃ ┣ courseService.js
+ ┣ App.jsx
+ ┗ main.jsx
+
+
+
+
+frontend/
+└── src/
+    ├── App.jsx
+    ├── main.jsx
+    │
+    ├── components/
+    │   ├── common/
+    │   │   ├── Navbar.jsx
+    │   │   ├── Sidebar.jsx
+    │   │   ├── Modal.jsx
+    │   │   ├── Loader.jsx
+    │   │   └── Toast.jsx
+    │   │
+    │   ├── admin/
+    │   │   ├── UserTable.jsx
+    │   │   ├── UserFormModal.jsx
+    │   │   └── SettingsForm.jsx
+    │   │
+    │   ├── instructor/
+    │       ├── CourseForm.jsx
+    │       ├── QuestionForm.jsx
+    │       ├── ModuleCard.jsx
+    │       └── LessonEditorModal.jsx
+    │
+    ├── pages/
+    │   ├── auth/
+    │   │   └── Login.jsx
+    │   │
+    │   ├── admin/
+    │   │   ├── Dashboard.jsx
+    │   │   ├── Users.jsx
+    │   │   ├── Settings.jsx
+    │   │   └── Roles.jsx       ← optional
+    │   │
+    │   ├── instructor/
+    │       ├── Dashboard.jsx
+    │       ├── Courses.jsx
+    │       ├── Modules.jsx
+    │       ├── Questions.jsx
+    │       ├── Exams.jsx
+    │       └── Students.jsx
+    │
+    ├── routes/
+    │   └── ProtectedRoutes.jsx
+    │
+    ├── services/
+    │   ├── api.js
+    │   ├── authService.js
+    │   ├── userService.js
+    │   ├── courseService.js
+    │   └── examService.js
+    │
+    └── styles/
+        └── global.css
