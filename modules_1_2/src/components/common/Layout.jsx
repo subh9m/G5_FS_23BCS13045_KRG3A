@@ -1,47 +1,36 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Navbar from './Navbar.jsx'; // Corrected import path
-import Sidebar from './Sidebar.jsx'; // Corrected import path
 
-/**
- * The main layout component for the application.
- * It includes the Sidebar and Navbar, and renders the page content as its children.
- *
- * @param {object} props - The component props.
- * @param {React.ReactNode} props.children - The page component to render inside the layout.
- */
+// These components are in the same folder, so the path is './'
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+
 const Layout = ({ children }) => {
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const location = useLocation(); 
+  const location = useLocation();
 
-  // Mock user data. In a real app, this would come from a global state or context.
-  const user = {
+  const loggedInUser = {
     name: 'Jamie Rivera',
-    role: 'Instructor', // Changed to Instructor to match the pages
+    role: 'Instructor',
   };
-  
+
+  // Get the current path from the router to highlight the active link
   const activeRoute = location.pathname; 
 
   return (
-    <div className="bg-white min-h-screen flex">
-      {/* --- Sidebar --- */}
+    <div className="flex h-screen bg-white">
       <Sidebar
-        userRole={user.role}
+        userRole={loggedInUser.role}
         activeRoute={activeRoute}
         isMobileOpen={isMobileSidebarOpen}
         setMobileOpen={setMobileSidebarOpen}
       />
-
-      {/* --- Main Content Area --- */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* --- Navbar --- */}
-        <Navbar 
-          user={user} 
-          onMenuButtonClick={() => setMobileSidebarOpen(true)} 
+        <Navbar
+          user={loggedInUser}
+          onMenuButtonClick={() => setMobileSidebarOpen(true)}
         />
-        
-        {/* --- Page Content --- */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 bg-black/5 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto bg-black/5 p-4 sm:p-6 lg:p-8">
           {children}
         </main>
       </div>

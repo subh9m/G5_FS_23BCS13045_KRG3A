@@ -1,23 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Import your global providers and layout
-import { ToastProvider } from './components/common/Toast';
-import Layout from './components/common/Layout';
+// Import global providers and layout with correct relative paths
+import { ToastProvider } from './components/common/Toast.jsx';
+import Layout from './components/common/Layout.jsx';
 
-// Final, correct import with lowercase 'b' in Dashboard
-import InstructorDashboard from './pages/instructor/Dashboard'; 
-import Courses from './pages/instructor/Courses';
-import Modules from './pages/instructor/Modules';
-import Questions from './pages/instructor/Questions';
-import Exams from './pages/instructor/Exams';
-import Students from './pages/instructor/Students';
+// Import all the instructor pages you have created
+import InstructorDashboard from './pages/instructor/Dashboard.jsx';
+import Courses from './pages/instructor/Courses.jsx';
+import Modules from './pages/instructor/Modules.jsx';
+import Questions from './pages/instructor/Questions.jsx';
+import Exams from './pages/instructor/Exams.jsx';
+import Students from './pages/instructor/Students.jsx';
 
 function App() {
   return (
+    // The ToastProvider makes notifications available everywhere
     <ToastProvider>
+      {/* The Router enables client-side navigation */}
       <Router>
+        {/* The Layout provides the consistent Navbar and Sidebar */}
         <Layout>
+          {/* The Routes component renders the correct page based on the URL */}
           <Routes>
             <Route path="/" element={<InstructorDashboard />} />
             <Route path="/courses" element={<Courses />} />
