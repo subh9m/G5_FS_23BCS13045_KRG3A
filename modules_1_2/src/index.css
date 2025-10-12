@@ -1,0 +1,11 @@
+/* --- Tailwind CSS Directives --- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Optional Base Styles --- */
+body {
+  font-family: sans-serif; /* A simple, clean font fallback */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
