@@ -15,26 +15,27 @@ const mockQuestions = [
 
 const Questions = () => {
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
+    <div className="space-y-8">
+      {/* Header with responsive layout and themed typography */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-black">Question Bank</h1>
-          <p className="mt-1 text-black/60">Manage all your exam questions in one place.</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-100 font-mono tracking-wider">Question Bank</h1>
+          <p className="mt-2 text-gray-400">Manage all your exam questions in one place.</p>
         </div>
-        <button className="mt-4 sm:mt-0 flex items-center justify-center gap-2 px-4 py-2 bg-red-500 text-white rounded-md text-sm font-semibold hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+        {/* Primary button style with red accent */}
+        <button className="flex items-center justify-center gap-2 px-5 py-2 border border-red-500 text-red-500 rounded-xl text-sm font-semibold hover:bg-red-500 hover:text-black hover:shadow-[0_0_20px_rgba(255,0,0,0.4)] transition-all duration-300 ease-in-out">
           <IconPlus className="w-4 h-4" />
           Add Question
         </button>
       </div>
 
-      {/* Filters */}
+      {/* Filters with themed styling */}
       <div className="flex flex-col sm:flex-row items-center gap-4">
-        <select className="w-full sm:w-auto px-3 py-2 bg-white border border-black/20 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+        <select className="w-full sm:w-auto px-4 py-2 bg-transparent border border-[#333] text-gray-300 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:shadow-[0_0_10px_rgba(255,0,0,0.2)] transition-all duration-300">
             <option>All Courses</option>
             <option>Advanced JavaScript</option>
         </select>
-        <select className="w-full sm:w-auto px-3 py-2 bg-white border border-black/20 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+        <select className="w-full sm:w-auto px-4 py-2 bg-transparent border border-[#333] text-gray-300 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:shadow-[0_0_10px_rgba(255,0,0,0.2)] transition-all duration-300">
             <option>All Difficulties</option>
             <option>Easy</option>
             <option>Medium</option>
@@ -42,28 +43,28 @@ const Questions = () => {
         </select>
       </div>
 
-      {/* Questions Table */}
-      <div className="bg-white border border-black/10 rounded-lg shadow-sm">
+      {/* Questions Table inside a themed container with futuristic hover effects */}
+      <div className="bg-black/60 backdrop-blur-md border border-[#333] rounded-2xl overflow-hidden hover:shadow-[0_0_25px_rgba(255,0,0,0.25)] hover:-translate-y-1 transition-all duration-500 ease-in-out">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
-            <thead className="bg-black/5 text-xs text-black/60 uppercase tracking-wider">
+            <thead className="bg-black/40 text-xs text-gray-400 uppercase tracking-wider font-mono">
               <tr>
-                <th className="p-4">Question</th>
-                <th className="p-4">Course</th>
-                <th className="p-4">Difficulty</th>
-                <th className="p-4 text-right">Actions</th>
+                <th className="px-6 py-4">Question</th>
+                <th className="px-6 py-4">Course</th>
+                <th className="px-6 py-4">Difficulty</th>
+                <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-black/10">
+            <tbody>
               {mockQuestions.map((q) => (
-                <tr key={q.id} className="hover:bg-black/5">
-                  <td className="p-4 font-semibold max-w-md truncate">{q.text}</td>
-                  <td className="p-4 text-black/70">{q.course}</td>
-                  <td className="p-4 text-black/70">{q.difficulty}</td>
-                  <td className="p-4">
+                <tr key={q.id} className="border-b border-[#333] last:border-b-0 hover:bg-white/5 transition-colors duration-300 ease-in-out">
+                  <td className="px-6 py-4 font-semibold text-gray-200 max-w-md truncate">{q.text}</td>
+                  <td className="px-6 py-4 text-gray-400">{q.course}</td>
+                  <td className="px-6 py-4 text-gray-400">{q.difficulty}</td>
+                  <td className="px-6 py-4">
                     <div className="flex justify-end items-center gap-2">
-                        <button className="p-2 text-black/60 hover:text-black transition-colors" title="Edit Question"><IconEdit className="w-4 h-4" /></button>
-                        <button className="p-2 text-black/60 hover:text-red-500 transition-colors" title="Delete Question"><IconDelete className="w-4 h-4" /></button>
+                      <button className="p-2 text-gray-400 rounded-full transition-all duration-300 ease-in-out hover:text-white hover:bg-white/10" title="Edit Question"><IconEdit className="w-4 h-4" /></button>
+                      <button className="p-2 text-gray-400 rounded-full transition-all duration-300 ease-in-out hover:text-red-500 hover:bg-red-500/10" title="Delete Question"><IconDelete className="w-4 h-4" /></button>
                     </div>
                   </td>
                 </tr>

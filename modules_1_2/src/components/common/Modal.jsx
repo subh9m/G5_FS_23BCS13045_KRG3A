@@ -42,42 +42,42 @@ const Modal = ({ isOpen, onClose, title, children, footer }) => {
   return (
     // Portal Root: Renders the modal at the top level of the DOM
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
     >
       {/* --- Modal Overlay --- */}
       <div
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ease-in-out"
+        className="fixed inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300 ease-in-out"
         onClick={onClose}
         aria-hidden="true"
       ></div>
 
       {/* --- Modal Content --- */}
-      <div className="relative w-full max-w-lg bg-white rounded-lg shadow-xl transition-all duration-300 ease-in-out transform scale-95 opacity-0 animate-fade-in-scale">
+      <div className="relative w-full max-w-lg bg-black/60 backdrop-blur-md border border-[#333] rounded-2xl transition-all duration-300 ease-in-out transform scale-95 opacity-0 animate-fade-in-scale">
         {/* Modal Header */}
-        <div className="flex items-center justify-between p-4 border-b border-black/10">
-          <h2 id="modal-title" className="text-lg font-bold text-black">
+        <div className="flex items-center justify-between p-6 border-b border-[#333]">
+          <h2 id="modal-title" className="text-xl font-semibold text-gray-200 tracking-wide font-mono">
             {title}
           </h2>
           <button
             onClick={onClose}
-            className="p-1 text-black/60 rounded-full transition-colors hover:bg-black/10 hover:text-black focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="p-1 text-gray-400 rounded-full transition-all duration-300 ease-in-out hover:text-red-500 hover:bg-red-500/10 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-black"
             aria-label="Close modal"
           >
-            <IconX className="w-5 h-5" />
+            <IconX className="w-6 h-6" />
           </button>
         </div>
 
         {/* Modal Body */}
-        <div className="p-6">
+        <div className="p-6 text-gray-300 leading-relaxed">
           {children}
         </div>
 
         {/* Modal Footer (Optional) */}
         {footer && (
-          <div className="flex items-center justify-end p-4 space-x-3 bg-black/5 border-t border-black/10 rounded-b-lg">
+          <div className="flex items-center justify-end p-6 space-x-4 border-t border-[#333]">
             {footer}
           </div>
         )}

@@ -1,35 +1,62 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 
-// A simple hamburger menu icon for mobile responsiveness
+// Simple hamburger icon
 const IconMenu = ({ className }) => (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
 );
 
 /**
- * A responsive and minimalist Navbar component for the main application layout.
- *
- * @param {object} props - The component props.
- * @param {object} props.user - The user object containing name and role.
- * @param {Function} props.onMenuButtonClick - Function to call when the mobile menu button is clicked.
+ * Responsive, minimalist Navbar for all user roles (Admin, Instructor, Student)
  */
-const Navbar = ({ user = { name: 'Alex Morgan', role: 'Administrator' }, onMenuButtonClick }) => {
+const Navbar = ({ user, onMenuButtonClick }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const location = useLocation();
 
-  // Toggles the visibility of the user profile dropdown.
-  const toggleDropdown = () => {
-    setIsDropdownOpen(prevState => !prevState);
-  };
+  // Detect role based on current route
+  const detectedRole = useMemo(() => {
+    if (location.pathname.startsWith('/admin')) return 'Administrator';
+    if (location.pathname.startsWith('/student')) return 'Student';
+    return 'Instructor';
+  }, [location.pathname]);
 
-  // A mock logout function.
+  // Fall back to dynamic role if user.role is not passed
+  const activeUser = useMemo(() => {
+    return (
+      user || {
+        name:
+          detectedRole === 'Administrator'
+            ? 'Taylor Smith'
+            : detectedRole === 'Student'
+            ? 'Alex Carter'
+            : 'Jamie Rivera',
+        role: detectedRole,
+      }
+    );
+  }, [user, detectedRole]);
+
+  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
+
   const handleLogout = () => {
-    console.log('User has been logged out.');
-    setIsDropdownOpen(false); // Close dropdown after action
+    console.log('User logged out');
+    setIsDropdownOpen(false);
   };
 
-  // Hook to close the dropdown when a click is detected outside of it.
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -40,103 +67,99 @@ const Navbar = ({ user = { name: 'Alex Morgan', role: 'Administrator' }, onMenuB
     if (isDropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
-
-    // Cleanup the event listener on component unmount or when dropdown closes.
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isDropdownOpen]);
-  
-  // Generates user initials from their full name for the avatar.
-  const getInitials = (name) => {
-    if (!name) return '';
-    return name
-      .split(' ')
-      .map(n => n[0])
+
+  const getInitials = (name) =>
+    name
+      ?.split(' ')
+      .map((n) => n[0])
       .join('')
       .toUpperCase();
-  };
 
   return (
-    <header className="bg-white border-b border-black/10 sticky top-0 z-20 font-sans">
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          
-          {/* --- Left Section: Mobile Menu Button + Logo/Title --- */}
+    <header className="sticky top-0 z-20 border-b border-[#333] bg-black/80 backdrop-blur-md font-sans">
+      <nav className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="flex h-20 items-center justify-between">
+          {/* --- Left Section: Logo / Panel Name --- */}
+          <div className="flex items-center space-x-3">
+            <span className="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+            <h1 className="font-mono text-xl font-bold tracking-wider text-gray-100">
+              {activeUser.role} Panel
+            </h1>
+          </div>
+
+          {/* --- Right Section: Profile & Mobile Menu --- */}
           <div className="flex items-center space-x-4">
-            {/* Mobile Menu Button (Visible on screens smaller than lg) */}
+            {/* Profile Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                type="button"
+                onClick={toggleDropdown}
+                className="flex items-center space-x-3 rounded-full transition-all duration-300 ease-in-out hover:shadow-[0_0_15px_rgba(255,0,0,0.3)] focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-black"
+                aria-expanded={isDropdownOpen}
+                aria-haspopup="true"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#333] bg-[#0a0a0a] font-mono text-sm font-bold tracking-widest text-gray-200">
+                  {getInitials(activeUser.name)}
+                </div>
+                <div className="hidden flex-col items-start text-left md:flex">
+                  <span className="text-sm font-semibold text-gray-200">
+                    {activeUser.name}
+                  </span>
+                  <span className="text-xs text-gray-400">{activeUser.role}</span>
+                </div>
+              </button>
+
+              {/* Dropdown Menu */}
+              <div
+                className={`absolute right-0 mt-3 w-56 origin-top-right rounded-xl border border-[#333] bg-black/80 backdrop-blur-lg shadow-2xl transition-all duration-300 ease-in-out ${
+                  isDropdownOpen
+                    ? 'scale-100 opacity-100'
+                    : 'pointer-events-none scale-95 opacity-0'
+                }`}
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="menu-button"
+              >
+                <div className="p-1.5">
+                  <div className="mb-1 border-b border-[#333] px-3.5 py-2.5">
+                    <p className="text-sm font-semibold text-gray-400">
+                      Signed in as
+                    </p>
+                    <p className="truncate font-mono text-sm text-gray-200">
+                      {activeUser.name}
+                    </p>
+                  </div>
+                  <a
+                    href="#"
+                    className="block w-full rounded-md px-3.5 py-2 text-left text-sm text-gray-300 transition-colors duration-300 hover:bg-white/5 hover:text-red-500"
+                    role="menuitem"
+                  >
+                    Account Settings
+                  </a>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full rounded-md px-3.5 py-2 text-left text-sm font-semibold text-gray-300 transition-colors duration-300 hover:bg-red-500/10 hover:text-red-500"
+                    role="menuitem"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Menu Button */}
             <button
               type="button"
-              className="p-1 text-black lg:hidden"
+              className="p-1 text-gray-400 transition-colors duration-300 hover:text-red-500 lg:hidden"
               onClick={onMenuButtonClick}
               aria-label="Open sidebar"
             >
               <IconMenu className="h-6 w-6" />
             </button>
-            
-            {/* Logo and App Title */}
-            <div className="flex items-center space-x-3">
-              <span className="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
-              <h1 className="text-xl font-bold tracking-tight text-black">
-                ExamPlatform
-              </h1>
-            </div>
-          </div>
-
-          {/* --- Right Section: User Profile Dropdown --- */}
-          <div className="relative" ref={dropdownRef}>
-            <button
-              type="button"
-              onClick={toggleDropdown}
-              className="flex items-center space-x-3 p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-transform transform hover:scale-105"
-              aria-expanded={isDropdownOpen}
-              aria-haspopup="true"
-            >
-              <div className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-bold text-sm">
-                {getInitials(user.name)}
-              </div>
-              <div className="hidden md:flex flex-col items-start text-left">
-                <span className="font-semibold text-sm text-black">{user.name}</span>
-                <span className="text-xs text-black/60">{user.role}</span>
-              </div>
-            </button>
-
-            {/* Dropdown Menu */}
-            <div
-              className={`
-                absolute right-0 mt-2 w-56 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5
-                transition ease-out duration-100
-                ${isDropdownOpen ? 'transform opacity-100 scale-100' : 'transform opacity-0 scale-95 pointer-events-none'}
-              `}
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="menu-button"
-            >
-              <div className="py-1" role="none">
-                <div className="px-4 py-3 border-b border-black/10">
-                  <p className="text-sm font-semibold text-black" role="none">
-                    Signed in as
-                  </p>
-                  <p className="text-sm text-black/80 truncate" role="none">
-                    {user.name}
-                  </p>
-                </div>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-black transition-colors hover:bg-black/5"
-                  role="menuitem"
-                >
-                  Account Settings
-                </a>
-                <button
-                  onClick={handleLogout}
-                  className="w-full text-left block px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-black/5 hover:text-red-500"
-                  role="menuitem"
-                >
-                  Logout
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </nav>

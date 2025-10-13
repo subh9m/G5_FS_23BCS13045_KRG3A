@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
-// These components are in the same folder, so the path is './'
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
@@ -9,28 +8,39 @@ const Layout = ({ children }) => {
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const location = useLocation();
 
-  const loggedInUser = {
-    name: 'Jamie Rivera',
-    role: 'Instructor',
-  };
+  // Detect user role from current route (admin / student / instructor)
+  const detectedRole = useMemo(() => {
+    if (location.pathname.startsWith('/admin')) return 'Administrator';
+    if (location.pathname.startsWith('/student')) return 'Student';
+    return 'Instructor';
+  }, [location.pathname]);
 
-  // Get the current path from the router to highlight the active link
-  const activeRoute = location.pathname; 
+  // Dynamic user info for display
+  const loggedInUser = useMemo(() => {
+    if (detectedRole === 'Administrator') {
+      return { name: 'Taylor Smith', role: 'Administrator' };
+    } else if (detectedRole === 'Student') {
+      return { name: 'Alex Carter', role: 'Student' };
+    } else {
+      return { name: 'Jamie Rivera', role: 'Instructor' };
+    }
+  }, [detectedRole]);
 
   return (
-    <div className="flex h-screen bg-white">
+    <div className="flex min-h-screen bg-black font-sans text-gray-200">
       <Sidebar
         userRole={loggedInUser.role}
-        activeRoute={activeRoute}
+        activeRoute={location.pathname}
         isMobileOpen={isMobileSidebarOpen}
         setMobileOpen={setMobileSidebarOpen}
       />
-      <div className="flex-1 flex flex-col overflow-hidden">
+
+      <div className="flex flex-1 flex-col overflow-hidden">
         <Navbar
           user={loggedInUser}
           onMenuButtonClick={() => setMobileSidebarOpen(true)}
         />
-        <main className="flex-1 overflow-y-auto bg-black/5 p-4 sm:p-6 lg:p-8">
+        <main className="flex-1 overflow-y-auto bg-[#0a0a0a] p-6 md:p-8 lg:p-10">
           {children}
         </main>
       </div>
@@ -39,4 +49,3 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
-
